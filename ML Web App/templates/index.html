@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corn Classifier</title>
+    <script>
+        var loadFile = function(event) {
+            var image = document.getElementById('output');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
+        </script>
+</head>
+<body>
+    <h1 style ="text-align: center;">Classifier</h1>
+    <form action="predict" method="post" enctype="multipart/form-data">
+        <input type="file" name="imgFile" onchange="loadFile()" id="imgFile">
+        <input type="submit" value="Predict Image">
+    </form>
+
+    <img id='output'>
+
+
+    <p>{{data}}</p>
+</body>
+
+</html>
