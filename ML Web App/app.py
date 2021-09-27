@@ -1,3 +1,4 @@
+from posixpath import join
 from flask import Flask, render_template, request
 import keras
 import numpy as np
@@ -5,18 +6,23 @@ from PIL import Image
 import skimage
 from skimage import transform
 
+
 app = Flask(__name__)
+
+toReturn = ['']
+showResults = False
 
 @app.route('/', methods=['GET', 'POST'])
 
 def home_page():
-    return render_template('index.html')
+    
+    return render_template('index.html', data="toReturn")
 
 @app.route('/predict', methods=['POST'])
 
 def predict():
     imgFile = request.files['imgFile']
-    image_path = './images/' + imgFile.filename
+    image_path = './static/images/' + imgFile.filename
     imgFile.save(image_path)
 
     new_model = keras.models.load_model('model_new.h5')
@@ -31,15 +37,18 @@ def predict():
     prediction = np.argmax(prediction,axis=1)
 
     result = CATEGORIES[prediction[0]]
+
     toReturn = [image_path, result]
 
+    showResults = True
+
     print(image_path)
-    print(result)
+    print(toReturn)
     print(prediction)
     
 
 
-    return render_template('index.html', data=result) 
+    return render_template('index.html', data=toReturn) 
 
 
 

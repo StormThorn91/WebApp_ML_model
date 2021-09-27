@@ -4,25 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corn Classifier</title>
-    <script>
-        var loadFile = function(event) {
-            var image = document.getElementById('output');
-            image.src = URL.createObjectURL(event.target.files[0]);
-        };
-        </script>
+    <title>Corn Disease Classifier</title>
 </head>
 <body>
-    <h1 style ="text-align: center;">Classifier</h1>
-    <form action="predict" method="post" enctype="multipart/form-data">
-        <input type="file" name="imgFile" onchange="loadFile()" id="imgFile">
-        <input type="submit" value="Predict Image">
+    <h1>Corn Disease Classifier</h1>
+    <form action="predict" method="post" id="form" enctype="multipart/form-data">
+        <input type="file" name="imgFile" onchange="form.submit()" id="imgFile">
     </form>
 
-    <img id='output'>
+    {% if data[0] == 't' %}
+    <p><img id="output" src="" width="200"></p>
+    <p>Image here</p>
+
+    {% else %}
+    <p><img id="output" src="{{ data[0] }}" width="200"></p>
+    <p>{{data[1]}}</p>
+
+    {% endif %}
 
 
-    <p>{{data}}</p>
 </body>
 
 </html>
