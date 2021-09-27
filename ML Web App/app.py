@@ -1,26 +1,9 @@
-from os import sep
 from flask import Flask, render_template, request
-
 import keras
-
-from keras.preprocessing.image import ImageDataGenerator
-from tensorflow.keras.optimizers import Adam
-from keras.preprocessing import image
-from keras.preprocessing.image import img_to_array
-from sklearn.preprocessing import MultiLabelBinarizer
-from sklearn.model_selection import train_test_split
-from keras.preprocessing.image import ImageDataGenerator
 import numpy as np
-import matplotlib.pyplot as plt
-import cv2
 from PIL import Image
 import skimage
 from skimage import transform
-import pandas as pd
-
-
-DEFAULT_IMAGE_SIZE = tuple((256, 256))
-labels = pd.read_csv("labels.txt", sep='/n').values
 
 app = Flask(__name__)
 
@@ -38,7 +21,6 @@ def predict():
 
     new_model = keras.models.load_model('model_new.h5')
 
-    img1 = cv2.imread(image_path)
     np_image = Image.open(imgFile)
     np_image = np.array(np_image).astype('float32')/255
     np_image = transform.resize(np_image, (256, 256, 3))
