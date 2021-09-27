@@ -22,7 +22,7 @@ def home_page():
 
 def predict():
     imgFile = request.files['imgFile']
-    image_path = './static/images/' + imgFile.filename
+    image_path = './static/images/uploaded/' + imgFile.filename
     imgFile.save(image_path)
 
     new_model = keras.models.load_model('model_new.h5')

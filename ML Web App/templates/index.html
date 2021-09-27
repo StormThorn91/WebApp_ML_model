@@ -4,24 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./static/css/styles.css">
     <title>Corn Disease Classifier</title>
 </head>
 <body>
     <h1>Corn Disease Classifier</h1>
-    <form action="predict" method="post" id="form" enctype="multipart/form-data">
-        <input type="file" name="imgFile" onchange="form.submit()" id="imgFile">
-    </form>
 
-    {% if data[0] == 't' %}
-    <p><img id="output" src="" width="200"></p>
-    <p>Image here</p>
+    <div class="container">
+        <div class="data-container">
+            {% if data[0] == 't' %}
+            <div class="img-container">
+                <p><img id="output" src="./static/images/upload-img.jpg" max-width="50vw"></p>
+            </div>
+            
+            <div class="results-container">
+                <p>Results</p>
 
-    {% else %}
-    <p><img id="output" src="{{ data[0] }}" width="200"></p>
-    <p>{{data[1]}}</p>
-
-    {% endif %}
-
+            </div>
+            
+            {% else %}
+            <div class="img-container">
+                <p><img id="output" src="{{ data[0] }}" width="50%"></p>
+            </div>
+            
+            <div class="results-container">
+                <p>{{data[1]}}</p>
+            </div>
+    
+            {% endif %}
+        </div>
+        
+        <div class="form-container">
+            <form action="predict" method="post" id="form" enctype="multipart/form-data">
+                <input type="file" name="imgFile" accept="image/*" onchange="form.submit()" id="imgFile" hidden>
+                <label for="imgFile"><br>Choose File</label>
+            </form>
+        </div>
+        
+    
+    </div>
 
 </body>
 
