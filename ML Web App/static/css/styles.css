@@ -12,6 +12,10 @@ form{
     height: 15vh;
 }
 
+.container {
+    margin: 10px 10px;
+}
+
 .img-container {
     margin: 0 5px;
 }
@@ -37,7 +41,7 @@ form{
 }
 
 .img-container p img {
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 .img-container p {
@@ -81,5 +85,11 @@ form label {
     background-color: white;
     border: 1px dashed gray;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  form label {
+      display: flex;
+      align-items: center;
+      display: grid;
   }
 

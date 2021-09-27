@@ -14,7 +14,7 @@
         <div class="data-container">
             {% if data[0] == 't' %}
             <div class="img-container">
-                <p><img id="output" src="./static/images/upload-img.jpg" max-width="50vw"></p>
+                <p><img id="output" src="./static/images/upload-img.jpg" max-width="50vw" style=" margin: 0;"></p>
             </div>
             
             <div class="results-container">
@@ -37,7 +37,7 @@
         <div class="form-container">
             <form action="predict" method="post" id="form" enctype="multipart/form-data">
                 <input type="file" name="imgFile" accept="image/*" onchange="form.submit()" id="imgFile" hidden>
-                <label for="imgFile"><br>Choose File</label>
+                <label for="imgFile"><p>Choose File</p></label>
             </form>
         </div>
         
