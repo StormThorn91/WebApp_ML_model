@@ -8,11 +8,14 @@
     <title>Corn Disease Classifier</title>
 </head>
 <body>
-    <h1>Corn Disease Classifier</h1>
+    <div class="header">
+        <h1>Corn Diseases Identification and Severity Detection System</h1>
+    </div>
 
     <div class="container">
+        <h3>Classification</h3>
         <div class="data-container">
-            {% if data[0] == 't' %}
+            {% if data[0] == 't' or data[0] == '' %}
             <div class="img-container">
                 <p><img id="output" src="./static/images/upload-img.jpg" max-width="15vw" style=" margin: 0;"></p>
             </div>
@@ -37,9 +40,48 @@
         </div>
         
         <div class="form-container">
-            <form action="predict" method="post" id="form" enctype="multipart/form-data">
+            <form action="classify" method="post" id="form" enctype="multipart/form-data">
                 <input type="file" name="imgFile" accept="image/*" onchange="form.submit()" id="imgFile" hidden>
                 <label for="imgFile"><p>UPLOAD</p></label>
+            </form>
+        </div>
+        
+    
+    </div>
+
+    <div class="container">
+        <h3>Severity</h3>
+        <div class="data-container">
+            {% if severe[0] == 't' or severe[0] == '' %}
+            <div class="img-container">
+                <p><img id="output" src="./static/images/upload-img.jpg" max-width="15vw" style=" margin: 0;"></p>
+            </div>
+            
+            <div class="results-container">
+                <h4>RESULT:</h4>
+
+            </div>
+            
+            {% else %}
+            <div class="img-container">
+                <p><img id="output" src="{{ severe[0] }}" width="50%"></p>
+            </div>
+            
+            <div class="results-container">
+                <h4>RESULT:</h4>
+                <p>Percent of infected part is {{severe[1]}}%</p>
+                <p>{{severe[2]}}</p>
+                <p>{{severe[3]}}</p>
+
+            </div>
+    
+            {% endif %}
+        </div>
+        
+        <div class="form-container">
+            <form action="severity" method="post" id="form" enctype="multipart/form-data">
+                <input type="file" name="severityFile" accept="image/*" onchange="form.submit()" id="severityFile" hidden>
+                <label for="severityFile"><p>UPLOAD</p></label>
             </form>
         </div>
         

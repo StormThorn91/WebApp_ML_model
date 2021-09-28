@@ -8,6 +8,10 @@ h1 {
     text-align: center;
 }
 
+.container h3 {
+    padding-left: 1%;
+}
+
 form{
     height: 15vh;
 }
@@ -70,7 +74,8 @@ form{
 
 
 .form-container {
-    position: fixed;
+    margin-top: 2%;
+    position: relative;
     bottom: 0;
     width: 100%;
     
